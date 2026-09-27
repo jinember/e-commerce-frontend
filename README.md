@@ -1,21 +1,92 @@
-# mypro5
+# 优选商城 - 前端 (e-commerce-frontend)
 
-> A Vue.js project
+基于 Vue 2 + Element UI 的电商系统前端，包含后台管理系统与 C 端商城页面。
 
-## Build Setup
+## 技术栈
 
-``` bash
-# install dependencies
-npm install
+| 类别 | 技术 |
+|------|------|
+| 框架 | Vue 2.x |
+| UI 组件库 | Element UI |
+| 路由 | Vue Router |
+| 状态管理 | Vuex |
+| HTTP 客户端 | Axios |
+| 构建工具 | Vue CLI (webpack) |
+| 图表 | ECharts |
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 功能模块
 
-# build for production with minification
-npm run build
+### 后台管理系统
+- **登录/权限**：基于角色的动态菜单渲染，首页快速入口按角色权限过滤
+- **首页仪表盘**：商品总数、今日订单、注册用户、今日销售额统计卡片
+- **商品管理**：
+  - 分类管理（左侧三级树，支持上下移动排序）
+  - 品牌管理（logo 上传、关联分类）
+  - 属性分组、规格参数、销售属性
+  - 商品发布（多步骤表单，支持草稿保存与定时发布）
+- **订单管理**：订单列表（多条件检索）、订单详情、发货、退款、操作日志
+- **用户管理**：后台用户（支持绑定多角色）、角色管理、部门管理（树形）
+- **会员管理**：会员列表、积分调整、批量状态操作
+- **营销管理**：促销活动、优惠券、广告管理（定时发布）
+- **交易管理**：支付记录、物流跟踪、发票管理（开票 + PDF 上传/预览）
+- **客服中心**：会话列表、聊天工作台、会话质量看板
+- **数据分析**：行为漏斗、订单分析、评价分析、客服质量、会员画像、地域分布、A/B 对照、DQC 稽核
 
-# build for production and view the bundle analyzer report
-npm run build --report
+### C 端商城
+- 首页（轮播广告、分类导航、热门商品）
+- 商品列表（分类筛选、搜索、排序）
+- 商品详情（规格选择、促销价计算、优惠券展示）
+- 购物车、结算、支付模拟
+- 会员中心（订单、收藏、地址、优惠券）
+- 客服咨询入口
+
+## 项目结构
+
+```
+src/
+├── api/              # 接口请求封装
+├── assets/           # 静态资源
+├── components/       # 公共组件
+├── router/           # 路由配置
+├── store/            # Vuex 状态管理
+├── utils/            # 工具函数（请求拦截、权限校验等）
+├── views/            # 页面组件
+│   ├── admin/        # 后台管理页面
+│   └── shop/         # C 端商城页面
+├── App.vue
+└── main.js
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 快速开始
+
+### 1. 环境要求
+- Node.js 14+
+- npm 或 yarn
+
+### 2. 安装依赖
+```bash
+npm install
+```
+
+### 3. 启动开发服务器
+```bash
+npm run dev
+```
+访问 http://localhost:8080
+
+### 4. 构建生产版本
+```bash
+npm run build
+```
+
+## 后端接口
+后端项目地址：[e-commerce-backend](https://github.com/jinember/e-commerce-backend)
+- 接口基地址：http://localhost:8090/mall-sys
+- 接口文档：http://localhost:8090/mall-sys/swagger-ui/index.html
+
+## 默认账号
+| 角色 | 账号 | 说明 |
+|------|------|------|
+| 系统管理员 | admin | 拥有全部权限 |
+| 交易管理员 | （按需创建） | 仅订单/交易模块 |
+| 客服 | kefu01 | 客服工作台 |
